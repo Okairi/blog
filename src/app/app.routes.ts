@@ -45,6 +45,17 @@ export const routes: Routes = [
             (x) => x.RegisterComponent
           ),
       },
+      {
+        path: '**',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
     ],
+  },
+  // Ruta global para capturar todo lo que no coincida
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full',
   },
 ];
