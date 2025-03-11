@@ -1,1 +1,9 @@
-<div class="sidebar">sidebar</div>
+<div class="sidebar">
+  <h2>Destacados</h2>
+
+  <div class="list-blog-destacados">
+    <div class="element-item" *ngFor="let item of sidebarList">
+      {{ item.title }}
+    </div>
+  </div>
+</div>
