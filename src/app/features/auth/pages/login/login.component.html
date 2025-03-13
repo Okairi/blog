@@ -1,1 +1,6 @@
-<p>login works!</p>
+<app-card-register
+  [title]="'Login'"
+  (formSubmit)="onSubmit($event)"
+  class="container-login"
+  [isLoading]="isLoading"
+></app-card-register>

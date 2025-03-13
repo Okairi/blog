@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-list-blog',
-  imports: [],
   templateUrl: './list-blog.component.html',
   styleUrl: './list-blog.component.css',
 })
-export class ListBlogComponent {
+export class ListBlogComponent implements OnInit, OnDestroy {
   blogs$: Observable<any[]>;
+  private subscription!: Subscription;
 
   constructor(private firestore: Firestore) {
     const blogsCollection = collection(this.firestore, 'blogs');
@@ -18,8 +17,15 @@ export class ListBlogComponent {
   }
 
   ngOnInit() {
-    this.blogs$.subscribe((blogs) => {
+    this.subscription = this.blogs$.subscribe((blogs) => {
       console.log('Blogs:', blogs);
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      console.log('Suscripción cerrada');
+    }
   }
 }

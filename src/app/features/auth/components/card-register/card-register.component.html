@@ -1,0 +1,51 @@
+<article class="container-register">
+  <h2>{{ title }}</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="body">
+    <div>
+      <input type="email" placeholder="Email" formControlName="email" />
+      <div
+        *ngIf="
+          registerForm.get('email')?.invalid &&
+          registerForm.get('email')?.touched
+        "
+      >
+        <small *ngIf="registerForm.get('email')?.hasError('required')">
+          El email es obligatorio.
+        </small>
+        <small *ngIf="registerForm.get('email')?.hasError('email')">
+          Ingresa un email válido.
+        </small>
+      </div>
+    </div>
+    <div>
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          registerForm.get('password')?.invalid &&
+          registerForm.get('password')?.touched
+        "
+      >
+        <small *ngIf="registerForm.get('password')?.hasError('required')">
+          La contraseña es obligatoria.
+        </small>
+        <small *ngIf="registerForm.get('password')?.hasError('minlength')">
+          La contraseña debe tener al menos 6 caracteres.
+        </small>
+      </div>
+
+      <button type="submit" [disabled]="isLoading">
+        <span *ngIf="isLoading; else buttonText">
+          <app-loading></app-loading>
+        </span>
+        <ng-template #buttonText>
+          {{ isRegister ? "Registro" : "Login" }}
+        </ng-template>
+      </button>
+    </div>
+  </form>
+</article>
