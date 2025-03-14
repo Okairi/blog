@@ -38,14 +38,28 @@
         </small>
       </div>
 
-      <button type="submit" [disabled]="isLoading">
-        <span *ngIf="isLoading; else buttonText">
-          <app-loading></app-loading>
+      <div class="contenbutton">
+        <button type="submit" [disabled]="isLoading">
+          <span *ngIf="isLoading; else buttonText">
+            <app-loading></app-loading>
+          </span>
+          <ng-template #buttonText>
+            {{ isRegister ? "Registro" : "Login" }}
+          </ng-template>
+        </button>
+
+        <!-- redirecto go register page -->
+
+        <span *ngIf="isRegister; else login">
+          <a routerLink="/auth/login" class="cuenta">¿Ya tienes cuenta?</a>
         </span>
-        <ng-template #buttonText>
-          {{ isRegister ? "Registro" : "Login" }}
+
+        <ng-template #login>
+          <a routerLink="/auth/register" class="cuenta"
+            >¿Todavía no tienes cuenta?</a
+          >
         </ng-template>
-      </button>
+      </div>
     </div>
   </form>
 </article>

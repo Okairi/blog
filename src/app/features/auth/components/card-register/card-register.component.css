@@ -10,6 +10,8 @@
    overflow: hidden;
    height: 400px;
 
+
+
  }
 
  .body {
@@ -50,4 +52,16 @@
 
  small {
    color: red;
+ }
+
+ .contenbutton {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
+
+ }
+
+ .cuenta {
+   font-size: 18px;
  }

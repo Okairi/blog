@@ -1,1 +1,7 @@
-<p>register works!</p>
+<app-card-register
+  [title]="'Registro'"
+  (formSubmit)="onSubmit($event)"
+  class="container-login"
+  [isLoading]="isLoading"
+  [isRegister]="true"
+></app-card-register>

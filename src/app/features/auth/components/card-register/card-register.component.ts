@@ -8,10 +8,17 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card-register',
-  imports: [FormsModule, CommonModule, ReactiveFormsModule, LoadingComponent],
+  imports: [
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    LoadingComponent,
+    RouterLink,
+  ],
   templateUrl: './card-register.component.html',
   styleUrl: './card-register.component.css',
 })

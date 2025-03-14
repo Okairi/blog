@@ -30,7 +30,7 @@ export class LoginComponent {
 
       this.alert('Login exitoso!', 'Bienvenido a la aplicación', 'success');
 
-      this.router.navigate(['/home']); // Redirige a la página de home
+      this.router.navigate(['/home']);
     } catch (error) {
       console.error('Error logging in:', error);
 
