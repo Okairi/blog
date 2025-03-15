@@ -24,3 +24,19 @@ p {
 
   margin-bottom: 2rem;
 }
+
+.nodata {
+
+  text-align: center;
+  font-size: 20px;
+  color: #290a5b;
+  background-color: #adbedb;
+  border-radius: 8px;
+  /* mas oscuro */
+  box-shadow: 1px 0px 20px 13px #0000001a;
+  width: fit-content;
+  padding: 2rem;
+  display: flex;
+  margin: 40vh auto;
+
+}

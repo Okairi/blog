@@ -1,5 +1,5 @@
-<div class="list-blogs">
-  <div class="item" *ngFor="let item of arrTest">
+<div *ngIf="listBlogs.length; else nodata" class="list-blogs">
+  <div class="item" *ngFor="let item of listBlogs">
     <h3>{{ item.title }}</h3>
 
     <p>{{ item.content }}</p>
@@ -8,8 +8,10 @@
       <i>
         <b>Autor: {{ "proximante" }}</b>
       </i>
-
-      <div class="puntuacion"></div>
     </div>
   </div>
 </div>
+
+<ng-template #nodata>
+  <div class="nodata">Todavía no hay blogs.</div>
+</ng-template>
