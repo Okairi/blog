@@ -1,1 +1,15 @@
-<p>list-blog works!</p>
+<div class="list-blogs">
+  <div class="item" *ngFor="let item of arrTest">
+    <h3>{{ item.title }}</h3>
+
+    <p>{{ item.content }}</p>
+
+    <div class="info-autor">
+      <i>
+        <b>Autor: {{ "proximante" }}</b>
+      </i>
+
+      <div class="puntuacion"></div>
+    </div>
+  </div>
+</div>
