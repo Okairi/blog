@@ -1,15 +1,11 @@
-<div class="app-header">
+<header class="app-header">
+  <span class="menu-toggle" (click)="toggleMenu()">☰</span>
   <nav>
-    <ul>
-      <li></li>
-      <div class="content">
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Mis blogs</a></li>
-        <li><a href="#">Acerca de</a></li>
-      </div>
-      <div>
-        <li><a href="#">Logout</a></li>
-      </div>
+    <ul class="nav-links" [class.active]="menuOpen">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Mis blogs</a></li>
+      <li><a href="#">Acerca de</a></li>
+      <li><a href="#">Logout</a></li>
     </ul>
   </nav>
-</div>
+</header>
