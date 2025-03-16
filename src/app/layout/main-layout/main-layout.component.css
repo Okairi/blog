@@ -1,11 +1,13 @@
 .main-layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  /* Header arriba, contenido flexible, footer abajo */
   grid-template-areas:
     "header"
     "body"
     "footer";
-  height: 100vh;
+  min-height: 100vh;
+  /* Asegura que la página ocupe toda la pantalla */
 }
 
 app-header {
@@ -13,23 +15,14 @@ app-header {
   width: 100%;
 }
 
+.layout-body {
+  grid-area: body;
+  width: 100%;
+  padding: 1rem;
+  /* Ajusta el espaciado si es necesario */
+}
+
 app-footer {
   grid-area: footer;
   width: 100%;
-}
-
-.layout-body {
-  grid-area: body;
-  display: grid;
-  height: 100%;
-  grid-template-columns: 350px 1fr;
-
-}
-
-
-
-.content {
-  padding: 20px;
-  background: #f5f5f5;
-  /* Para que se vea mejor */
 }
