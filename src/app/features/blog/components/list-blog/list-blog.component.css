@@ -3,7 +3,11 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 520px));
   width: 100%;
   gap: 1rem;
+  justify-content: center;
+
 }
+
+@media (max-width: 768px) {}
 
 .item {
   box-sizing: border-box;

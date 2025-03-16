@@ -1,13 +1,12 @@
 <div *ngIf="listBlogs.length; else nodata" class="list-blogs">
   <div class="item" *ngFor="let item of listBlogs">
     <h3>{{ item.title }}</h3>
-
     <p>{{ item.content }}</p>
 
     <div class="info-autor">
-      <i>
-        <b>Autor: "proximante" </b>
-      </i>
+      <i
+        ><b>Autor: {{ item.authorName }}</b></i
+      >
     </div>
   </div>
 </div>
