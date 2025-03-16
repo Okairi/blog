@@ -12,6 +12,11 @@
   /* mas oscuro */
   box-shadow: 1px 0px 20px 13px #0000001a;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  justify-content: space-between;
+
 
 }
 

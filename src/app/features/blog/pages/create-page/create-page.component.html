@@ -1,5 +1,5 @@
 <div class="create-blog-container">
-  <h2>Crear Nuevo Blog</h2>
+  <h2>Crear pregunta</h2>
 
   <form (ngSubmit)="createBlog()">
     <div class="input-group">
@@ -20,11 +20,13 @@
         id="content"
         [(ngModel)]="content"
         name="content"
-        placeholder="Escribe tu blog aquí..."
+        placeholder="Escribe tu pregunta aquí..."
         required
       ></textarea>
     </div>
 
-    <button type="submit" class="btn-submit">Publicar Blog</button>
+    <button type="submit" class="btn-submit" [disabled]="isLoading">
+      {{ isLoading ? "...cargando" : " Publicar pregunta" }}
+    </button>
   </form>
 </div>

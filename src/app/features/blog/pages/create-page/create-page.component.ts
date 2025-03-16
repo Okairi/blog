@@ -3,26 +3,31 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
   styleUrl: './create-page.component.css',
-  imports: [FormsModule],
+  imports: [FormsModule, LoadingComponent, CommonModule],
 })
 export class CreatePageComponent {
   title: string = '';
   content: string = '';
+  isLoading = false;
 
   constructor(private firestore: Firestore, private auth: Auth) {}
 
   async createBlog() {
+    this.isLoading = true;
     if (!this.title.trim() || !this.content.trim()) {
       Swal.fire({
         icon: 'error',
         title: 'Campos vacíos',
         text: 'Por favor, completa todos los campos antes de enviar.',
       });
+      this.isLoading = false;
       return;
     }
 
@@ -33,6 +38,8 @@ export class CreatePageComponent {
         title: 'No autenticado',
         text: 'Debes iniciar sesión para publicar un blog.',
       });
+      this.isLoading = false;
+
       return;
     }
 
@@ -49,6 +56,8 @@ export class CreatePageComponent {
       this.title = '';
       this.content = '';
 
+      this.isLoading = false;
+
       Swal.fire({
         icon: 'success',
         title: 'Blog publicado',
@@ -56,6 +65,8 @@ export class CreatePageComponent {
         confirmButtonColor: '#3085d6',
       });
     } catch (error) {
+      this.isLoading = false;
+
       Swal.fire({
         icon: 'error',
         title: 'Error',
