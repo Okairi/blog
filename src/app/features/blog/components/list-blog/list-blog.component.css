@@ -15,6 +15,15 @@
 
 }
 
+.item p {
+  word-wrap: break-word;
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Ajusta el ancho máximo según sea necesario */
+}
+
+
 h3 {
   text-align: center;
   margin-bottom: 1.4rem;

@@ -1,1 +1,30 @@
-<p>create-page works!</p>
+<div class="create-blog-container">
+  <h2>Crear Nuevo Blog</h2>
+
+  <form (ngSubmit)="createBlog()">
+    <div class="input-group">
+      <label for="title">Título</label>
+      <input
+        type="text"
+        id="title"
+        [(ngModel)]="title"
+        name="title"
+        placeholder="Ingresa el título"
+        required
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="content">Contenido</label>
+      <textarea
+        id="content"
+        [(ngModel)]="content"
+        name="content"
+        placeholder="Escribe tu blog aquí..."
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Publicar Blog</button>
+  </form>
+</div>
