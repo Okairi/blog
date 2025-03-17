@@ -1,19 +1,14 @@
-<!-- Mostrar loading mientras carga -->
-
 <div class="loading" *ngIf="isLoading">...Cargando</div>
 
-<!-- Mostrar contenido cuando termine de cargar -->
 <div class="blog-detail-container" *ngIf="!isLoading && blog">
   <h1>{{ blog.title }}</h1>
   <p class="blog-content">{{ blog.content }}</p>
 
   <hr />
 
-  <!-- Sección de Comentarios -->
   <div class="comments-section">
     <h3>Comentarios</h3>
 
-    <!-- Input para escribir comentario -->
     <div class="comment-box">
       <textarea
         [(ngModel)]="newComment"
@@ -23,11 +18,18 @@
     </div>
 
     <!-- Lista de comentarios -->
-    <div class="comment" *ngFor="let comment of comments">
-      <p>
-        <b>{{ comment.author_name }}</b
-        >: {{ comment.content }}
-      </p>
-    </div>
+    <article class="list-coments">
+      <div *ngIf="comments.length > 0; else noComments">
+        <div class="comment" *ngFor="let comment of comments">
+          <p>
+            <b>{{ comment.author_name }}</b
+            >: {{ comment.content }}
+          </p>
+        </div>
+      </div>
+      <ng-template #noComments class="optional">
+        <b>Se el primero en comentar!!</b>
+      </ng-template>
+    </article>
   </div>
 </div>
