@@ -11,7 +11,7 @@ import {
   addDoc,
   Timestamp,
 } from '@angular/fire/firestore';
-import { Auth } from '@angular/fire/auth';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
@@ -33,7 +33,15 @@ export class BlogDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private firestore: Firestore,
     private auth: Auth
-  ) {}
+  ) {
+    // Guardamos el nombre del usuario al iniciar sesión
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        const defaultName = user.email?.split('@')[0] || 'Usuario';
+        localStorage.setItem('username', defaultName);
+      }
+    });
+  }
 
   async ngOnInit() {
     const blogId = this.route.snapshot.paramMap.get('id');
@@ -71,11 +79,14 @@ export class BlogDetailComponent implements OnInit {
       return;
     }
 
+    // Obtener el nombre desde localStorage
+    const username = localStorage.getItem('username') || 'Anónimo';
+
     await addDoc(collection(this.firestore, 'comments'), {
       blog_id: this.blog.id,
       author_id: user.uid,
-      author_name: user.displayName || 'Anónimo',
-      content: this.newComment,
+      author_name: username,
+      content: this.newComment.trim(),
       created_at: Timestamp.now(),
       parent_id: null,
     });
