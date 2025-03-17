@@ -20,6 +20,7 @@ app-header {
   width: 100%;
   padding: 1rem;
   /* Ajusta el espaciado si es necesario */
+  background-color: #1d3357;
 }
 
 app-footer {
