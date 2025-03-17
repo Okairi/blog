@@ -4,7 +4,7 @@
   width: 100%;
   gap: 1rem;
   justify-content: center;
-
+  margin-top: 4rem;
 }
 
 @media (max-width: 768px) {}
@@ -59,4 +59,23 @@ p {
   display: flex;
   margin: 40vh auto;
 
+}
+
+.conten-loading {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.novedades {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 1.4rem;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

@@ -9,18 +9,21 @@ import {
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-list-blog',
   templateUrl: './list-blog.component.html',
   styleUrl: './list-blog.component.css',
-  imports: [CommonModule],
+  imports: [CommonModule, LoadingComponent],
 })
 export class ListBlogComponent implements OnInit, OnDestroy {
   blogs$: Observable<any[]>;
   private subscription!: Subscription;
   listBlogs: any[] = [];
   usersMap: { [key: string]: string } = {}; // Mapa para almacenar user_id => nombre
+
+  isLoading = true;
 
   constructor(private firestore: Firestore, private router: Router) {
     const blogsCollection = collection(this.firestore, 'blogs');
@@ -45,6 +48,7 @@ export class ListBlogComponent implements OnInit, OnDestroy {
         ...blog,
         authorName: this.usersMap[blog.author_id] || 'Desconocido',
       }));
+      this.isLoading = false;
     });
   }
 
