@@ -14,8 +14,8 @@ import {
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import Swal from 'sweetalert2';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-blog-detail',
@@ -27,15 +27,18 @@ import Swal from 'sweetalert2';
 export class BlogDetailComponent implements OnInit {
   blog: any = null;
   comments: any[] = [];
+  displayedComments: any[] = [];
   newComment: string = '';
-  isLoading: boolean = true; // Estado de carga
+  isLoading: boolean = true;
+
+  currentPage: number = 1;
+  commentsPerPage: number = 10;
 
   constructor(
     private route: ActivatedRoute,
     private firestore: Firestore,
     private auth: Auth
   ) {
-    // Guardamos el nombre del usuario al iniciar sesión
     onAuthStateChanged(this.auth, (user) => {
       if (user) {
         const defaultName = user.email?.split('@')[0] || 'Usuario';
@@ -50,7 +53,7 @@ export class BlogDetailComponent implements OnInit {
       await this.loadBlog(blogId);
       await this.loadComments(blogId);
     }
-    this.isLoading = false; // Se oculta el loading después de cargar los datos
+    this.isLoading = false;
   }
 
   async loadBlog(blogId: string) {
@@ -64,11 +67,40 @@ export class BlogDetailComponent implements OnInit {
   async loadComments(blogId: string) {
     const commentsRef = collection(this.firestore, 'comments');
     const q = query(commentsRef, where('blog_id', '==', blogId));
+
     const commentsSnap = await getDocs(q);
-    this.comments = commentsSnap.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+    this.comments = commentsSnap.docs
+      .map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }))
+      .sort(
+        (a: any, b: any) => b.created_at?.toMillis() - a.created_at?.toMillis()
+      ); // Ordenar manualmente
+
+    this.updateDisplayedComments();
+  }
+
+  updateDisplayedComments() {
+    const startIndex = (this.currentPage - 1) * this.commentsPerPage;
+    this.displayedComments = this.comments.slice(
+      startIndex,
+      startIndex + this.commentsPerPage
+    );
+  }
+
+  nextPage() {
+    if (this.currentPage * this.commentsPerPage < this.comments.length) {
+      this.currentPage++;
+      this.updateDisplayedComments();
+    }
+  }
+
+  prevPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedComments();
+    }
   }
 
   async addComment() {
@@ -78,7 +110,7 @@ export class BlogDetailComponent implements OnInit {
     if (!user) {
       Swal.fire({
         icon: 'warning',
-        title: 'Error de envio.',
+        title: 'Error de envío.',
         text: 'Debes estar autenticado para comentar.',
         confirmButtonColor: '#3085d6',
       });
@@ -86,7 +118,6 @@ export class BlogDetailComponent implements OnInit {
       return;
     }
 
-    // Obtener el nombre desde localStorage
     const username = localStorage.getItem('username') || 'Anónimo';
 
     await addDoc(collection(this.firestore, 'comments'), {

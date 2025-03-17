@@ -4,11 +4,7 @@
   <h1>{{ blog.title }}</h1>
   <p class="blog-content">{{ blog.content }}</p>
 
-  <hr />
-
   <div class="comments-section">
-    <h3>Comentarios</h3>
-
     <div class="comment-box">
       <textarea
         [(ngModel)]="newComment"
@@ -16,19 +12,33 @@
       ></textarea>
       <button (click)="addComment()">Enviar</button>
     </div>
+    <h3 style="margin: 1rem 0rem">Comentarios</h3>
 
-    <!-- Lista de comentarios -->
-    <article class="list-coments">
-      <div *ngIf="comments.length > 0; else noComments">
-        <div class="comment" *ngFor="let comment of comments">
+    <article class="list-comments">
+      <div *ngIf="displayedComments.length > 0; else noComments">
+        <div class="comment" *ngFor="let comment of displayedComments">
           <p>
             <b>{{ comment.author_name }}</b
             >: {{ comment.content }}
           </p>
         </div>
+
+        <div class="pagination">
+          <button (click)="prevPage()" [disabled]="currentPage === 1">
+            Anterior
+          </button>
+          <span class="separador">Página {{ currentPage }}</span>
+          <button
+            (click)="nextPage()"
+            [disabled]="currentPage * commentsPerPage >= comments.length"
+          >
+            Siguiente
+          </button>
+        </div>
       </div>
-      <ng-template #noComments class="optional">
-        <b>Todavía no hay comentarios, se el primero en responder!!</b>
+
+      <ng-template #noComments>
+        <b>Todavía no hay comentarios, ¡sé el primero en responder!</b>
       </ng-template>
     </article>
   </div>

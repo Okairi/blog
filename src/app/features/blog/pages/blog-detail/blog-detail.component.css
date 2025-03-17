@@ -73,3 +73,10 @@ h1 {
 button {
   background-color: #4242a4;
 }
+
+.pagination {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
