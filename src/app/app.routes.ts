@@ -26,6 +26,7 @@ export const routes: Routes = [
       },
       {
         path: 'blog/:id',
+        canActivate: [AuthGuard],
         loadComponent: () =>
           import(
             './features/blog/pages/blog-detail/blog-detail.component'

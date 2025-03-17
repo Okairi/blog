@@ -4,8 +4,9 @@
     <ul class="nav-links" [class.active]="menuOpen">
       <li class="close-btn" (click)="toggleMenu()">✖</li>
       <li><a href="#">Inicio</a></li>
-      <li><a href="#">Mis preguntas</a></li>
-      <li><a href="#">Acerca de</a></li>
+      <li *ngIf="isAuthenticated">
+        <a routerLink="/create-page">+ Crear pregunta</a>
+      </li>
       <li *ngIf="isAuthenticated">
         <a href="#" (click)="logout()">Logout</a>
       </li>
