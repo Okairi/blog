@@ -14,17 +14,20 @@ import {
 import { Auth } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-blog-detail',
   templateUrl: './blog-detail.component.html',
   styleUrl: './blog-detail.component.css',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, LoadingComponent],
 })
 export class BlogDetailComponent implements OnInit {
   blog: any = null;
   comments: any[] = [];
   newComment: string = '';
+  isLoading: boolean = true; // Estado de carga
 
   constructor(
     private route: ActivatedRoute,
@@ -38,6 +41,7 @@ export class BlogDetailComponent implements OnInit {
       await this.loadBlog(blogId);
       await this.loadComments(blogId);
     }
+    this.isLoading = false; // Se oculta el loading después de cargar los datos
   }
 
   async loadBlog(blogId: string) {
