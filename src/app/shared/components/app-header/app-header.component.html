@@ -6,7 +6,12 @@
       <li><a href="#">Inicio</a></li>
       <li><a href="#">Mis preguntas</a></li>
       <li><a href="#">Acerca de</a></li>
-      <li><a href="#">Logout</a></li>
+      <li *ngIf="isAuthenticated">
+        <a href="#" (click)="logout()">Logout</a>
+      </li>
+      <li *ngIf="!isAuthenticated">
+        <a routerLink="/auth/login">Login</a>
+      </li>
     </ul>
   </nav>
 </header>
