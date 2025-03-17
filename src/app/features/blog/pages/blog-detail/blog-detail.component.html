@@ -1,6 +1,8 @@
 <div class="loading" *ngIf="isLoading">...Cargando</div>
 
 <div class="blog-detail-container" *ngIf="!isLoading && blog">
+  <h2 class="title-details">Detalles de la pregunta</h2>
+
   <h1>{{ blog.title }}</h1>
   <p class="blog-content">{{ blog.content }}</p>
 
@@ -9,6 +11,7 @@
       <textarea
         [(ngModel)]="newComment"
         placeholder="Escribe tu comentario..."
+        style="max-width: 100%"
       ></textarea>
       <button (click)="addComment()">Enviar</button>
     </div>

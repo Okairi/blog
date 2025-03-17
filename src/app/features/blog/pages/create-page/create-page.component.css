@@ -67,3 +67,11 @@ textarea {
     padding: 15px;
   }
 }
+
+
+.create-blog-title {
+  color: #4242a4;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}

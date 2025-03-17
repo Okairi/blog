@@ -1,5 +1,5 @@
 <div class="create-blog-container">
-  <h2>Crear pregunta</h2>
+  <h2 class="create-blog-title">Cree su propia pregunta</h2>
 
   <form (ngSubmit)="createBlog()">
     <div class="input-group">
@@ -22,6 +22,7 @@
         name="content"
         placeholder="Escribe tu pregunta aquí..."
         required
+        style="max-width: 100%"
       ></textarea>
     </div>
 

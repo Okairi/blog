@@ -80,3 +80,11 @@ button {
   gap: 1rem;
   align-items: center;
 }
+
+.title-details {
+
+  color: #4242a4;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
