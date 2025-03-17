@@ -104,12 +104,20 @@ export class BlogDetailComponent implements OnInit {
   }
 
   async addComment() {
-    if (!this.newComment.trim()) return;
+    if (!this.newComment.trim()) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Campos vacíos',
+        text: 'Por favor, completa todos los campos antes de enviar.',
+        confirmButtonColor: '#3085d6',
+      });
+      return;
+    }
 
     const user = this.auth.currentUser;
     if (!user) {
       Swal.fire({
-        icon: 'warning',
+        icon: 'error',
         title: 'Error de envío.',
         text: 'Debes estar autenticado para comentar.',
         confirmButtonColor: '#3085d6',
