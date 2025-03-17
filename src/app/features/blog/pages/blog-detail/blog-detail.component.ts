@@ -15,6 +15,7 @@ import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-blog-detail',
@@ -75,7 +76,13 @@ export class BlogDetailComponent implements OnInit {
 
     const user = this.auth.currentUser;
     if (!user) {
-      alert('Debes estar autenticado para comentar.');
+      Swal.fire({
+        icon: 'warning',
+        title: 'Error de envio.',
+        text: 'Debes estar autenticado para comentar.',
+        confirmButtonColor: '#3085d6',
+      });
+
       return;
     }
 
