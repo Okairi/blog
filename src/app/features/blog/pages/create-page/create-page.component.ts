@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-page',
@@ -17,7 +18,11 @@ export class CreatePageComponent {
   content: string = '';
   isLoading = false;
 
-  constructor(private firestore: Firestore, private auth: Auth) {}
+  constructor(
+    private firestore: Firestore,
+    private auth: Auth,
+    private router: Router
+  ) {}
 
   async createBlog() {
     this.isLoading = true;
@@ -64,6 +69,8 @@ export class CreatePageComponent {
         text: 'Tu blog se ha publicado correctamente.',
         confirmButtonColor: '#3085d6',
       });
+
+      this.router.navigate(['/home']);
     } catch (error) {
       this.isLoading = false;
 
