@@ -7,6 +7,7 @@ import {
   doc,
   getDoc,
 } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -21,21 +22,21 @@ export class ListBlogComponent implements OnInit, OnDestroy {
   listBlogs: any[] = [];
   usersMap: { [key: string]: string } = {}; // Mapa para almacenar user_id => nombre
 
-  constructor(private firestore: Firestore) {
+  constructor(private firestore: Firestore, private router: Router) {
     const blogsCollection = collection(this.firestore, 'blogs');
-    this.blogs$ = collectionData(blogsCollection);
+    this.blogs$ = collectionData(blogsCollection, { idField: 'id' }); // 👈 Se agrega el ID
   }
 
   ngOnInit() {
     this.subscription = this.blogs$.subscribe(async (blogs) => {
       console.log('Blogs:', blogs);
 
-      // Obtener nombres de autores
-      for (const blog of blogs) {
-        if (!this.usersMap[blog.author_id]) {
-          this.usersMap[blog.author_id] = await this.getUserName(
-            blog.author_id
-          );
+      // Obtener nombres de autores solo si no están en el mapa
+      const uniqueAuthors = [...new Set(blogs.map((b) => b.author_id))];
+
+      for (const userId of uniqueAuthors) {
+        if (!this.usersMap[userId]) {
+          this.usersMap[userId] = await this.getUserName(userId);
         }
       }
 
@@ -58,6 +59,10 @@ export class ListBlogComponent implements OnInit, OnDestroy {
       console.error('Error obteniendo usuario:', error);
       return 'Error';
     }
+  }
+
+  verBlog(blogId: string) {
+    this.router.navigate(['/blog', blogId]); // Redirige a la página de detalle con el ID
   }
 
   ngOnDestroy(): void {

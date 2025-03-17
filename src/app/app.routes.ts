@@ -22,6 +22,13 @@ export const routes: Routes = [
             './features/blog/pages/create-page/create-page.component'
           ).then((x) => x.CreatePageComponent),
       },
+      {
+        path: 'blog/:id',
+        loadComponent: () =>
+          import(
+            './features/blog/pages/blog-detail/blog-detail.component'
+          ).then((x) => x.BlogDetailComponent),
+      },
     ],
   },
   {

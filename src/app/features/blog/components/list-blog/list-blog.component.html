@@ -1,8 +1,7 @@
 <div *ngIf="listBlogs.length; else nodata" class="list-blogs">
-  <div class="item" *ngFor="let item of listBlogs">
+  <div class="item" *ngFor="let item of listBlogs" (click)="verBlog(item.id)">
     <h3>{{ item.title }}</h3>
     <p>{{ item.content }}</p>
-
     <div class="info-autor">
       <i
         ><b>Autor: {{ item.authorName }}</b></i
