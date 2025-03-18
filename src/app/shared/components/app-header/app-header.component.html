@@ -22,7 +22,7 @@
         </svg>
       </li>
       <li>
-        <a routerLink="/">
+        <a routerLink="/" (click)="toggleMenu()">
           <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
             <path
               d="M3 12l9-9 9 9M4 10v10h5v-6h6v6h5V10"
@@ -35,7 +35,7 @@
         </a>
       </li>
       <li *ngIf="isAuthenticated">
-        <a routerLink="/create-page">
+        <a routerLink="/create-page" (click)="toggleMenu()">
           <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
             <path
               d="M12 5v14M5 12h14"
@@ -48,7 +48,7 @@
         </a>
       </li>
       <li *ngIf="isAuthenticated">
-        <a href="#" (click)="logout()">
+        <a (click)="logout(); toggleMenu()">
           <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
             <path
               d="M15 3h6v18h-6M10 17l5-5-5-5M15 12H3"
@@ -61,7 +61,7 @@
         </a>
       </li>
       <li *ngIf="!isAuthenticated">
-        <a routerLink="/auth/login">
+        <a routerLink="/auth/login" (click)="toggleMenu()">
           <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
             <path
               d="M15 3h6v18h-6M10 17l5-5-5-5M15 12H3"

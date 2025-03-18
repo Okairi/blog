@@ -32,6 +32,9 @@
   justify-content: space-around;
   align-items: center;
   padding: 0;
+  z-index: 10000;
+  /* Un valor muy alto para asegurar que esté encima */
+
 }
 
 .nav-links a {
