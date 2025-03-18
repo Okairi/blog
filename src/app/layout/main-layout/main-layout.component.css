@@ -6,7 +6,6 @@
     "body"
     "footer";
   min-height: 100vh;
-  background: #e0e6f5;
   /* Azul claro para mantener la armonía */
 }
 
@@ -31,7 +30,7 @@ app-header {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   max-width: 1200px;
-  margin: auto;
+  margin: 10vh auto;
   color: #1d3357;
   font-size: 1.2rem;
 }
