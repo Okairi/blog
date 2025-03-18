@@ -1,6 +1,6 @@
 .create-blog-container {
   max-width: 600px;
-  margin: 20vh auto;
+  margin: 10vh auto;
   padding: 20px;
   background: linear-gradient(135deg, #ffffff, #e3e9ff);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -111,5 +111,7 @@ textarea {
   .create-blog-container {
     width: 100%;
     padding: 15px;
+    margin: 0vh auto;
+    margin-bottom: 2rem;
   }
 }
