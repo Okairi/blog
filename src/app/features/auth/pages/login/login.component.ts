@@ -21,12 +21,10 @@ export class LoginComponent {
 
   async onSubmit(obj: ObjForm) {
     let { email, password } = obj;
-    console.log(obj);
     this.isLoading = true; // Inicia el loading
 
     try {
       const userCredential = await this.authService.login(email, password);
-      console.log('Logged in successfully:', userCredential.user);
 
       this.alert('Login exitoso!', 'Bienvenido a la aplicación', 'success');
 

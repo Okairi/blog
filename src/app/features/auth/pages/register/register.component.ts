@@ -20,13 +20,11 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router) {}
   async onSubmit(obj: ObjForm) {
     this.isLoading = true;
-    console.log(obj);
 
     const { email, password } = obj;
 
     try {
       let registerResponse = await this.authService.register(email, password);
-      console.log(registerResponse);
       this.alert('Registro exitoso!', 'Puede iniciar sesión', 'success');
 
       this.router.navigate(['/auth/login']);

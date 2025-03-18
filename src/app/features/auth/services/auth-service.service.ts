@@ -38,8 +38,6 @@ export class AuthService {
 
         // Guardar los datos en Firestore usando el UID como ID del documento
         await setDoc(doc(this.firestore, 'users', user.uid), userData);
-
-        console.log('Usuario registrado y guardado en Firestore:', userData);
       }
 
       return userCredential;

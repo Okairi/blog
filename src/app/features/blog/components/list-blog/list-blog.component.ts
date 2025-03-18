@@ -32,8 +32,6 @@ export class ListBlogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription = this.blogs$.subscribe(async (blogs) => {
-      console.log('Blogs:', blogs);
-
       // Obtener nombres de autores solo si no están en el mapa
       const uniqueAuthors = [...new Set(blogs.map((b) => b.author_id))];
 
@@ -72,7 +70,6 @@ export class ListBlogComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
-      console.log('Suscripción cerrada');
     }
   }
 }
