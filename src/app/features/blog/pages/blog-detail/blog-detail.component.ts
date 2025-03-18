@@ -16,13 +16,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import { LoadingBlackComponent } from '../../../../shared/components/loading-black/loading-black.component';
 
 @Component({
   selector: 'app-blog-detail',
   templateUrl: './blog-detail.component.html',
   styleUrl: './blog-detail.component.css',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoadingComponent],
+  imports: [CommonModule, FormsModule, LoadingComponent, LoadingBlackComponent],
 })
 export class BlogDetailComponent implements OnInit {
   blog: any = null;

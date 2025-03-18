@@ -9,13 +9,13 @@ import {
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
+import { LoadingBlackComponent } from '../../../../shared/components/loading-black/loading-black.component';
 
 @Component({
   selector: 'app-list-blog',
   templateUrl: './list-blog.component.html',
   styleUrl: './list-blog.component.css',
-  imports: [CommonModule, LoadingComponent],
+  imports: [CommonModule, LoadingBlackComponent],
 })
 export class ListBlogComponent implements OnInit, OnDestroy {
   blogs$: Observable<any[]>;

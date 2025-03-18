@@ -144,3 +144,14 @@ h3 {
     padding: 15px;
   }
 }
+
+
+
+.loading-black {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 20px;
+}
