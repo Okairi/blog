@@ -1,13 +1,15 @@
 footer {
-  padding: 1rem;
   background: linear-gradient(135deg, #1d3357, #3a539b);
   position: fixed;
   bottom: 0;
   width: 100%;
 }
 
+
+
 p {
   color: white;
   text-align: center;
+  padding: 1rem;
 
 }

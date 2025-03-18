@@ -3,7 +3,6 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
 import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
-import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
   selector: 'app-create-page',
   templateUrl: './create-page.component.html',
   styleUrl: './create-page.component.css',
-  imports: [FormsModule, LoadingComponent, CommonModule],
+  imports: [FormsModule, CommonModule],
 })
 export class CreatePageComponent {
   title: string = '';

@@ -109,7 +109,7 @@ textarea {
 
 @media (max-width: 768px) {
   .create-blog-container {
-    width: 90%;
+    width: 100%;
     padding: 15px;
   }
 }
