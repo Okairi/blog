@@ -1,17 +1,77 @@
 <header class="app-header">
-  <span class="menu-toggle" (click)="toggleMenu()">☰</span>
+  <span class="menu-toggle" (click)="toggleMenu()">
+    <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+      <path
+        d="M3 6h18M3 12h18M3 18h18"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  </span>
   <nav>
     <ul class="nav-links" [class.active]="menuOpen">
-      <li class="close-btn" (click)="toggleMenu()">✖</li>
-      <li><a href="#">Inicio</a></li>
-      <li *ngIf="isAuthenticated">
-        <a routerLink="/create-page">+ Crear pregunta</a>
+      <li class="close-btn" (click)="toggleMenu()">
+        <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+          <path
+            d="M6 6l12 12M18 6l-12 12"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </li>
+      <li>
+        <a routerLink="/">
+          <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+            <path
+              d="M3 12l9-9 9 9M4 10v10h5v-6h6v6h5V10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          Inicio
+        </a>
       </li>
       <li *ngIf="isAuthenticated">
-        <a href="#" (click)="logout()">Logout</a>
+        <a routerLink="/create-page">
+          <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+            <path
+              d="M12 5v14M5 12h14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          Crear pregunta
+        </a>
+      </li>
+      <li *ngIf="isAuthenticated">
+        <a href="#" (click)="logout()">
+          <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+            <path
+              d="M15 3h6v18h-6M10 17l5-5-5-5M15 12H3"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          Logout
+        </a>
       </li>
       <li *ngIf="!isAuthenticated">
-        <a routerLink="/auth/login">Login</a>
+        <a routerLink="/auth/login">
+          <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+            <path
+              d="M15 3h6v18h-6M10 17l5-5-5-5M15 12H3"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
+          Login
+        </a>
       </li>
     </ul>
   </nav>
