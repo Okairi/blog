@@ -1,6 +1,6 @@
 footer {
   padding: 1rem;
-  background-color: #4242a4;
+  background: linear-gradient(135deg, #1d3357, #3a539b);
   position: fixed;
   bottom: 0;
   width: 100%;

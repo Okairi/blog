@@ -13,7 +13,6 @@
   box-sizing: border-box;
   padding: 10px;
   border-radius: 8px;
-  /* mas oscuro */
   box-shadow: 1px 0px 20px 13px #0000001a;
   cursor: pointer;
   display: flex;
@@ -21,8 +20,15 @@
   word-wrap: break-word;
   justify-content: space-between;
   background-color: rgb(255, 255, 255);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
 
-
+/* Efecto al pasar el mouse */
+.item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  background-color: #f0f4ff;
+  /* Azul claro para resaltar */
 }
 
 .item p {
@@ -30,9 +36,7 @@
   line-height: 25px;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* Ajusta el ancho máximo según sea necesario */
 }
-
 
 h3 {
   text-align: center;
@@ -41,28 +45,23 @@ h3 {
 }
 
 p {
-
   margin-bottom: 2rem;
 }
 
 .nodata {
-
   text-align: center;
   font-size: 20px;
   color: #290a5b;
   background-color: #adbedb;
   border-radius: 8px;
-  /* mas oscuro */
   box-shadow: 1px 0px 20px 13px #0000001a;
   width: fit-content;
   padding: 2rem;
   display: flex;
   margin: 40vh auto;
-
 }
 
 .conten-loading {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,5 +76,4 @@ p {
   padding: 2rem;
   text-align: center;
   font-weight: bold;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }

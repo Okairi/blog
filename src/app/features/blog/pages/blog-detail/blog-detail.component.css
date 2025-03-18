@@ -51,8 +51,11 @@ button {
 
 
 .loading {
-  margin: 40vh 47vw;
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
 
 }
 

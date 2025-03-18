@@ -1,29 +1,48 @@
 .main-layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  /* Header arriba, contenido flexible, footer abajo */
   grid-template-areas:
     "header"
     "body"
     "footer";
   min-height: 100vh;
-  /* Asegura que la página ocupe toda la pantalla */
+  background: #e0e6f5;
+  /* Azul claro para mantener la armonía */
 }
 
 app-header {
   grid-area: header;
   width: 100%;
+  background: linear-gradient(135deg, #1d3357, #3a539b);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .layout-body {
   grid-area: body;
   width: 100%;
-  padding: 1rem;
-  /* Ajusta el espaciado si es necesario */
-  background-color: #1d3357;
+  padding: 2rem;
+  background: #f8faff;
+  /* Fondo claro para un mejor contraste */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  max-width: 1200px;
+  margin: auto;
+  color: #1d3357;
+  font-size: 1.2rem;
 }
 
 app-footer {
   grid-area: footer;
   width: 100%;
+  background: linear-gradient(135deg, #3a539b, #1d3357);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  text-align: center;
+  color: white;
+  font-size: 1rem;
 }

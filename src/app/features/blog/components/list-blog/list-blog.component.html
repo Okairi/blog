@@ -1,7 +1,7 @@
 <app-loading class="conten-loading" *ngIf="isLoading; else data"> </app-loading>
 
 <ng-template #data>
-  <h2 class="novedades">Últimas novedades!!!</h2>
+  <h2 class="novedades" style="color: #4242a4">Últimas novedades!!!</h2>
 
   <div *ngIf="listBlogs.length; else nodata" class="list-blogs">
     <div class="item" *ngFor="let item of listBlogs" (click)="verBlog(item.id)">
